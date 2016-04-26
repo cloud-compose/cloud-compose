@@ -12,7 +12,7 @@ setup(
     ],
     entry_points={
         "console_scripts": [
-            "cloud-compose=cloudcompose.commands.main:main",
+            "cloud-compose=cloudcompose.cli:cli",
         ]
     },
     author="Patrick Cullen and the WaPo platform tools team",
