@@ -1,11 +1,11 @@
 # cloud-compose
-Cloud Compose simplifies the process of running Docker images on EC2 instances. To use Cloud Compose you need three files:
+Cloud Compose simplifies the process of running Docker images on cloud instances. To use Cloud Compose you need three files:
 
 1. A docker-compose.yml that describes which images you want to run
 1. A cloud_init template for provisioning an EC2 server
 1. A cloud-compose.yml to configure the cloud-compose system. 
 
-Cloud Compose uses a simple plugin system to add additional tools. The most commonly used plugin is the cluster plugin. This plugin will provision a new server cluster on your favorite cloud provider. AWS is the only cloud provider currently supported.
+Cloud Compose uses a simple plugin system to add additional tools. The most commonly used plugin is the cluster plugin. This plugin will provision a new server cluster on your favorite cloud provider. 
 
 To install Cloud Compose, use pip to install the cloud-compose package and any additional plugins.
 
