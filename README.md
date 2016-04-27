@@ -30,3 +30,11 @@ You can also install a chatbot that will run these same commands from Slack. An 
 @cloud-compose mongodb cluster up
 ```
 
+## Contributing 
+To work on the code locally, checkout both cloud-compose and cloud-compose-cluster to the same parent directory. Then use a virtualenv and pip install editable to start working on them locally.
+```
+mkvirtualenv cloud-compose
+pip install --editable cloud-compose
+pip install --editable cloud-compose-cluster
+```
+

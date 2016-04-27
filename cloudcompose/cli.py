@@ -3,27 +3,20 @@
 
 import click
 import os
+from importlib import import_module
 
-plugin_folder = os.path.join(os.path.dirname(__file__), 'commands')
+#TODO read the list of plugins from the docker-compose.yml
+plugins = ['cluster']
 
 class CLI(click.MultiCommand):
-
     def list_commands(self, ctx):
-        rv = []
-        for filename in os.listdir(plugin_folder):
-            if filename.endswith('.py'):
-                rv.append(filename[:-3])
-        rv.sort()
-        return rv
+        return plugins
 
     def get_command(self, ctx, name):
-        ns = {}
-        fn = os.path.join(plugin_folder, name + '.py')
-        print "loading %s" % fn
-        with open(fn) as f:
-            code = compile(f.read(), fn, 'exec')
-            eval(code, ns, ns)
-        return ns['cli']
+        module_name = "cloudcompose.%s.commands.cli" % name
+        print "Importing %s" % module_name
+        imported_module = import_module(module_name)
+        return imported_module.cli
 
 cli = CLI(help='This tool\'s subcommands are loaded from a '
             'plugin folder dynamically.')
