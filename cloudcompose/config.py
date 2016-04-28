@@ -1,5 +1,6 @@
 from os.path import join, isfile
 import yaml
+from cloudcompose.exceptions import CloudComposeException
 
 class CloudConfig:
     def __init__(self):
@@ -11,7 +12,7 @@ class CloudConfig:
         config_data = None
         with open(join(config_dir, config_file), 'r') as yaml_file:
             config_data = yaml.load(yaml_file)
-        return config_dir, config_data['cluster']
+        return config_data[plugin_name], config_dir
 
     def find_config(self):
         # start at the working directory and look first in the current folder
@@ -19,8 +20,5 @@ class CloudConfig:
             for config_file in self.config_files:
                 if isfile(join(config_dir, config_file)):
                     return config_dir, config_file
-        raise CloudConfigException("Unable to find cloud-compose.yml in the current directory or directory called cloud-compose.")
+        raise CloudComposeException("Unable to find cloud-compose.yml in the current directory or directory called cloud-compose.")
 
-class CloudConfigException(Exception):
-    def __init__(self,*args,**kwargs):
-        Exception.__init__(self,*args,**kwargs)
