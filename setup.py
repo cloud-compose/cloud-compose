@@ -4,7 +4,7 @@ import warnings
 
 setup(
     name='cloud-compose',
-    version='0.0.1',
+    version='0.1.0',
     packages=find_packages(),
     include_package_data=True,
     install_requires=[
@@ -18,5 +18,8 @@ setup(
     namespace_packages = ['cloudcompose'],
     author="Patrick Cullen and the WaPo platform tools team",
     author_email="opensource@washingtonpost.com",
-    url="https://github.com/cloud-compose/cloud-compose"
+    url="https://github.com/cloud-compose/cloud-compose",
+    download_url = "https://github.com/cloud-compose/cloud-compose/tarball/v0.1.0",
+    keywords = ['cloud', 'compose', 'aws'],
+    classifiers = []
 )
