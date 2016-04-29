@@ -8,7 +8,7 @@ setup(
     packages=find_packages(),
     include_package_data=True,
     install_requires=[
-        'click',
+        'click>=6.6',
     ],
     entry_points={
         "console_scripts": [
