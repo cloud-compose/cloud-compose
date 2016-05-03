@@ -12,7 +12,7 @@ class CloudConfig:
         config_data = None
         with open(join(config_dir, config_file), 'r') as yaml_file:
             config_data = yaml.load(yaml_file)
-        return config_data[plugin_name], config_dir
+        return config_data[plugin_name]
 
     def find_config(self):
         # start at the working directory and look first in the current folder
