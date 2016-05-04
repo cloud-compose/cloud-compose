@@ -21,13 +21,13 @@ Immutable infrastructure is built around the following three principles:
 * unify scaling, deployment, and failure recovery 
 
 ### Consolidate code and configuration
-BUilde code and configuration files into the same Docker image. Use environment variables to change behavior as needed. Version the code and configuration in the same code repository and use Docker image tags to strongly version all infrastructure changes.
+Build code and configuration files into the same Docker image. Then use environment variables to change behavior as needed. Version the code and configuration in the same code repository and use Docker image tags to strongly version all infrastructure changes.
 
 ### Deploy infrastructure like code
-Infrastructure deployments can be automated just like code deployments by using the cloud providers API to create new servers. Just like with code changes, each deployment does a complete refresh of all configuration files so that no state is preserved on the servers between deployments. To manage application state like database data files, use cloud provider volumes and snapshots or cluster replication to quickly restore state on new servers.
+Infrastructure deployments can be automated just like code deployments by using the cloud providers API to create new servers. Just like with code changes, each deployment does a complete refresh of all changes so that no state is preserved on the servers between deployments. To manage application state, like data files, use cloud provider volumes and snapshots or built-in cluster replication to quickly restore data on new servers.
 
 ### Unify deployment, scaling, and failure recovery
-Instead of having different methods for responding to configuration changes, scaling, and failure recovery treat them all as the same type of event and use the same process. By replacing servers during deployment the failure recovery method is also getting tested at the same time. This simplifies operations and reduces complexity.
+Instead of using different strategies for configuration changes, scaling, and failure recovery treat them the same. By replacing servers during deployment the failure recovery method is also getting tested. This simplifies operations and reduces complexity.
 
 ## Contributing 
 To work on the code locally, checkout both cloud-compose and cloud-compose-cluster to the same parent directory. Then use a virtualenv and pip install editable to start working on them locally.
