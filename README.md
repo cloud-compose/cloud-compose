@@ -1,11 +1,5 @@
 # cloud-compose
-Cloud Compose simplifies the process of running Docker images on cloud instances. To use Cloud Compose you need three files:
-
-1. A docker-compose.yml that describes which images you want to run
-1. A cloud_init template for provisioning an EC2 server
-1. A cloud-compose.yml to configure the cloud-compose system. 
-
-Cloud Compose uses a simple plugin system to add additional tools. The most commonly used plugin is the cluster plugin. This plugin will provision a new server cluster on your favorite cloud provider. 
+Cloud Compose is a family of tools that support immutable infrastructure on cloud environments. This project contains the code needed to connect various plugins to support common cloud management operations. See the (Cloud Compose cluster plugin)[https://github.com/cloud-compose/cloud-compose-cluster] for a concrete example of how the plugin system works.
 
 To install Cloud Compose, use pip to install the cloud-compose package and any additional plugins.
 
@@ -14,21 +8,26 @@ pip install cloud-compose cloud-compose-cluster
 pip freeze > requirements.txt
 ```
 
-To see what commands are available for a particular plugin run the help option
+Once a plugin is configured, you can see what commands are available by running the plugin command with no options
 ```
-cloud-compose cluster help
-```
-
-To create a new cluster, you would simply issue the up command for the cluster plugin:
-```
-cloud-compose cluster up
+cloud-compose cluster 
 ```
 
-You can also install a chatbot that will run these same commands from Slack. An example chatbot command to provision a mongodb cluster might look like this
-```
-@cloud-compose alias github.com/cloud-compose/mongodb mongodb
-@cloud-compose mongodb cluster up
-```
+## Immutable Infrastructure
+Immutable infrastructure is built around the following three principles:
+
+* consolidate code and configuration
+* deploy infrastructure like code
+* unify scaling, deployment, and failure recovery 
+
+### Consolidate code and configuration
+BUilde code and configuration files into the same Docker image. Use environment variables to change behavior as needed. Version the code and configuration in the same code repository and use Docker image tags to strongly version all infrastructure changes.
+
+### Deploy infrastructure like code
+Infrastructure deployments can be automated just like code deployments by using the cloud providers API to create new servers. Just like with code changes, each deployment does a complete refresh of all configuration files so that no state is preserved on the servers between deployments. To manage application state like database data files, use cloud provider volumes and snapshots or cluster replication to quickly restore state on new servers.
+
+### Unify deployment, scaling, and failure recovery
+Instead of having different methods for responding to configuration changes, scaling, and failure recovery treat them all as the same type of event and use the same process. By replacing servers during deployment the failure recovery method is also getting tested at the same time. This simplifies operations and reduces complexity.
 
 ## Contributing 
 To work on the code locally, checkout both cloud-compose and cloud-compose-cluster to the same parent directory. Then use a virtualenv and pip install editable to start working on them locally.
