@@ -3,8 +3,9 @@ import yaml
 from cloudcompose.exceptions import CloudComposeException
 
 class CloudConfig:
-    def __init__(self):
-        self.config_dirs = ['.', 'cloud-compose']
+    def __init__(self, sub_dir='.'):
+        self.config_dirs = ['cloud-compose']
+        self.config_dirs.append(sub_dir)
         self.config_files = ['cloud-compose.yml', 'cloud-compose.yaml']
 
     def config_data(self, plugin_name):
