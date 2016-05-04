@@ -1,5 +1,5 @@
 # cloud-compose
-Cloud Compose is a family of tools that support immutable infrastructure on cloud environments. This project contains the code needed to connect various plugins to support common cloud management operations. See the (Cloud Compose cluster plugin)[https://github.com/cloud-compose/cloud-compose-cluster] for a concrete example of how the plugin system works.
+Cloud Compose is a family of tools that support immutable infrastructure on cloud environments. This project contains the code needed to connect various plugins to support common cloud management operations. See the [Cloud Compose cluster plugin](https://github.com/cloud-compose/cloud-compose-cluster) for a concrete example of how the plugin system works.
 
 To install Cloud Compose, use pip to install the cloud-compose package and any additional plugins.
 
