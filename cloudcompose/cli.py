@@ -4,12 +4,12 @@
 import click
 import os
 from importlib import import_module
-
-#TODO read the list of plugins from the cloud-compose.yml
-plugins = ['cluster']
+from cloudcompose.config import CloudConfig
 
 class CLI(click.MultiCommand):
     def list_commands(self, ctx):
+        cloud_config = CloudConfig()
+        plugins = cloud_config.list_plugins()
         return plugins
 
     def get_command(self, ctx, name):

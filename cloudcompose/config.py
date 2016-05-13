@@ -8,12 +8,19 @@ class CloudConfig:
         self.config_dirs.append(sub_dir)
         self.config_files = ['cloud-compose.yml', 'cloud-compose.yaml']
 
-    def config_data(self, plugin_name):
+    def _get_config_data(self):
         config_dir, config_file = self.find_config()
         config_data = None
         with open(join(config_dir, config_file), 'r') as yaml_file:
             config_data = yaml.load(yaml_file)
-        return config_data[plugin_name]
+        return config_data
+
+    def config_data(self, plugin_name):
+        return self._get_config_data()[plugin_name]
+
+    def list_plugins(self):
+        config_data = self._get_config_data()
+        return config_data.keys()
 
     def find_config(self):
         # start at the working directory and look first in the current folder
