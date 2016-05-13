@@ -29,11 +29,5 @@ Infrastructure deployments can be automated just like code deployments by using 
 ### Unify deployment, scaling, and failure recovery
 Instead of using different strategies for configuration changes, scaling, and failure recovery treat them the same. By replacing servers during deployment the failure recovery method is also getting tested. This simplifies operations and reduces complexity.
 
-## Contributing 
-To work on the code locally, checkout both cloud-compose and cloud-compose-cluster to the same parent directory. Then use a virtualenv and pip install editable to start working on them locally.
-```
-mkvirtualenv cloud-compose
-pip install --editable cloud-compose
-pip install --editable cloud-compose-cluster
-```
-
+# Contributing
+If you want to contribute to the project see the [contributing guide](CONTRIBUTING.md).
