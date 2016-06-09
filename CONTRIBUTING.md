@@ -20,3 +20,5 @@ Then use deploy the change to PyPi with this command:
 ```
 python setup.py sdist upload -r pypi
 ```
+
+If you creating a new plugin or need help setting up PyPi read [this](http://peterdowns.com/posts/first-time-with-pypi.html).
