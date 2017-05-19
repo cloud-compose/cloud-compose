@@ -1,8 +1,9 @@
+from builtins import object
 from os.path import join, isfile
 import yaml
 from cloudcompose.exceptions import CloudComposeException
 
-class CloudConfig:
+class CloudConfig(object):
     def __init__(self, sub_dir='.'):
         self.config_dirs = ['cloud-compose']
         self.config_dirs.append(sub_dir)
@@ -20,7 +21,7 @@ class CloudConfig:
 
     def list_plugins(self):
         config_data = self._get_config_data()
-        return config_data.keys()
+        return list(config_data.keys())
 
     def find_config(self):
         # start at the working directory and look first in the current folder

@@ -1,9 +1,10 @@
+from builtins import object
 from cloudcompose.cluster.template import Template
 from cloudcompose.cluster.dockercompose import DockerCompose
 from os.path import join, split
 from pprint import pprint
 
-class CloudInit():
+class CloudInit(object):
     def __init__(self, plugin_name, base_dir='.'):
         self.base_dir = base_dir
         self.template_file = '%s.sh' % plugin_name
@@ -14,7 +15,7 @@ class CloudInit():
         return [join(self.base_dir, path) for path in raw_search_path]
 
     def build(self, config_data, **kwargs):
-        for key, value in kwargs.iteritems():
+        for key, value in kwargs.items():
             config_data['_' + key] = value
         self.build_pre_hook(config_data, **kwargs)
         return self._render_template(config_data)
