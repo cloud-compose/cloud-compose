@@ -13,7 +13,7 @@ class CloudConfig(object):
         config_dir, config_file = self.find_config()
         config_data = None
         with open(join(config_dir, config_file), 'r') as yaml_file:
-            config_data = yaml.load(yaml_file)
+            config_data = yaml.load(yaml_file, Loader=yaml.FullLoader)
         return config_data
 
     def config_data(self, plugin_name):
